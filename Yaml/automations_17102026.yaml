@@ -1,0 +1,2155 @@
+- id: '1737061813138'
+  alias: Upload to PVOuput
+  description: Upload to PVOuput
+  triggers:
+  - trigger: time_pattern
+    minutes: /5
+  actions:
+  - action: rest_command.update_pvoutput
+    data: {}
+  mode: single
+- id: '1737062239192'
+  alias: Water2A
+  description: ''
+  triggers:
+  - trigger: time
+    at: '18:31:00'
+  conditions:
+  - condition: time
+    weekday:
+    - wed
+    - fri
+    - sun
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.sshelly_rgbw2_shelly_rgbw2_ch2
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Water Zone2 Turned On
+  - type: turn_on
+    device_id: 480a73fb128d0b9b3624e2a4b5821b88
+    entity_id: 37c05a86d7fbcd8b6cf8941a5cd865f8
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1737065466296'
+  alias: Water2B
+  description: ''
+  triggers:
+  - trigger: time
+    at: '20:00:00'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.sshelly_rgbw2_shelly_rgbw2_ch2
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Water Zone2 Turned Off
+  - type: turn_off
+    device_id: 480a73fb128d0b9b3624e2a4b5821b88
+    entity_id: 37c05a86d7fbcd8b6cf8941a5cd865f8
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1737080606046'
+  alias: Water1A
+  description: ''
+  triggers:
+  - trigger: time
+    at: '17:00:00'
+  conditions:
+  - condition: time
+    weekday:
+    - wed
+    - fri
+    - sun
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.sshelly_rgbw2_shelly_rgbw2_ch1
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Water Zone1 Turned On
+  - type: turn_on
+    device_id: 480a73fb128d0b9b3624e2a4b5821b88
+    entity_id: 021c58952d039629b1d09f3c98c328d9
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1737080861326'
+  alias: Water1B
+  description: ''
+  triggers:
+  - trigger: time
+    at: '18:30:00'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.sshelly_rgbw2_shelly_rgbw2_ch1
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Water Zone1 Turned Off
+  - type: turn_off
+    device_id: 480a73fb128d0b9b3624e2a4b5821b88
+    entity_id: 021c58952d039629b1d09f3c98c328d9
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1737080606047'
+  alias: Water3A
+  description: ''
+  triggers:
+  - trigger: time
+    at: '20:01:00'
+  conditions:
+  - condition: time
+    weekday:
+    - wed
+    - fri
+    - sun
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.sshelly_rgbw2_shelly_rgbw2_ch3
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Water Zone3 Turned On
+  - type: turn_on
+    device_id: 480a73fb128d0b9b3624e2a4b5821b88
+    entity_id: cfd26dbf1236af30455a8b2e17d61104
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1737080861327'
+  alias: Water3B
+  description: ''
+  triggers:
+  - trigger: time
+    at: '21:30:00'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.sshelly_rgbw2_shelly_rgbw2_ch3
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Water Zone3 Turned Off
+  - type: turn_off
+    device_id: 480a73fb128d0b9b3624e2a4b5821b88
+    entity_id: cfd26dbf1236af30455a8b2e17d61104
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1737689862236'
+  alias: Water4A
+  description: ''
+  triggers:
+  - trigger: time
+    at: '21:31:00'
+  conditions:
+  - condition: time
+    weekday:
+    - wed
+    - fri
+    - sun
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.sshelly_rgbw2_shelly_rgbw2_ch4
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Water Zone4 Turned On
+  - type: turn_on
+    device_id: 480a73fb128d0b9b3624e2a4b5821b88
+    entity_id: b10ee945245007929b6f58558c37c40d
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1737689901052'
+  alias: Water4B
+  description: ''
+  triggers:
+  - trigger: time
+    at: '23:00:00'
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.sshelly_rgbw2_shelly_rgbw2_ch4
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Water Zone4 Turned Off
+  - type: turn_off
+    device_id: 480a73fb128d0b9b3624e2a4b5821b88
+    entity_id: b10ee945245007929b6f58558c37c40d
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1738982620198'
+  alias: Slide Gate Open
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.esp32_wroom_01_z52_slide_gate_remote
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.esp32_wroom_01_slide_gate_out10
+  mode: single
+- id: '1738983277400'
+  alias: Slide Gate Closed
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.esp32_wroom_01_z52_slide_gate_remote
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.esp32_wroom_01_slide_gate_out10
+  mode: single
+- id: '1738985933232'
+  alias: Slide gate Status On
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.esp32_wroom_01_z52_slide_gate_open
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.esp32_wroom_01_z50_slide_gate_statur_led
+  mode: single
+- id: '1738986273158'
+  alias: Slide Gate Status Off
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.esp32_wroom_01_z52_slide_gate_open
+    from: 'on'
+    to: 'off'
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.esp32_wroom_01_z50_slide_gate_statur_led
+  mode: single
+- id: '1740622956551'
+  alias: Car Battery State
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.car_battery_monitor_4
+    below: 12
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Car Battery Voltage Low
+  mode: single
+- id: '1740623072425'
+  alias: Car Battery Charged
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.car_battery_monitor_4
+    above: 13.8
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Car Battery Charged
+  mode: single
+- id: '1741400525216'
+  alias: Front Gate has been closed
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.front_gate_switch_contact
+    from:
+    - 'on'
+    to:
+    - 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions:
+  - condition: sun
+    before: sunset
+    after: sunrise
+  actions:
+  - action: media_player.volume_set
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data:
+      volume_level: 0.35
+  - action: tts.speak
+    metadata: {}
+    data:
+      cache: true
+      message: Front gate has been closed,
+      media_player_entity_id: media_player.group_players_2
+    target:
+      entity_id: tts.piper
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: media_player.volume_set
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data:
+      volume_level: 0.2
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      entity_id:
+      - switch.audio_living_room_aux_output
+      - switch.audio_office_aux_output
+      - switch.audio_kitchen_a1_aux_output
+    data: {}
+    enabled: true
+  - action: media_player.media_play
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data: {}
+  mode: single
+- id: '1742411950130'
+  alias: Alarm Battery State
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.car_battery_monitor_3
+    below: 12
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  conditions:
+  - condition: time
+    after: 06:00:00
+    before: '20:00:00'
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Alarm Battery Voltage Low
+  - action: tts.speak
+    target:
+      entity_id: tts.piper
+    data:
+      cache: true
+      message: alarm battery voltage low
+      media_player_entity_id: media_player.group_players_2
+    enabled: true
+  mode: single
+- id: '1742965529662'
+  alias: Iphone charger
+  description: ''
+  use_blueprint:
+    path: Blackshome/appliance-notifications.yaml
+    input:
+      power_sensor: sensor.tuya_01_power
+      start_appliance_power: 3
+      start_time_delay: 0.25
+      end_appliance_power: 1
+      end_time_delay: 0.5
+      include_end_notify: enable_end_notify_options
+      end_notify_device:
+      - 9be55210ca85294a39b9da4d039a0b39
+      end_message_title: Iphone charged
+      end_message: Iphone has finished charging
+      end_notify_data:
+      - high_priority
+      running_dead_zone: 3
+- id: '1742967224171'
+  alias: Battery Charger Off
+  description: ''
+  triggers:
+  - trigger: time
+    at: '12:00:00'
+    weekday:
+    - fri
+    - mon
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.tuya_zigbee_01
+  mode: single
+- id: '1742969135528'
+  alias: Battery Charger On
+  description: ''
+  triggers:
+  - trigger: time
+    at: '12:02:00'
+    weekday:
+    - fri
+    - mon
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.tuya_zigbee_01
+  mode: single
+- id: '1743136732287'
+  alias: Kitchen Light On
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: f6369f62b67843ea735f064a15f81c22
+    entity_id: 7ec0689053c2be97b52c7a657b393ff0
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: sun
+    before: sunrise
+    before_offset: 01:00
+    after: sunset
+    after_offset: -00:45
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: ac48ba1bb8070a88846125e872b89e0d
+    entity_id: 06cc1e10b9c298fc7164fc9e010b1df5
+    domain: switch
+  mode: single
+- id: '1743136760403'
+  alias: Kitchen Light off
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: f6369f62b67843ea735f064a15f81c22
+    entity_id: 7ec0689053c2be97b52c7a657b393ff0
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: false
+  actions:
+  - type: turn_off
+    device_id: ac48ba1bb8070a88846125e872b89e0d
+    entity_id: 06cc1e10b9c298fc7164fc9e010b1df5
+    domain: switch
+  mode: single
+- id: '1743900173718'
+  alias: Home Thetre Power
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 2b81944dd8e5b667a8f8d94799be20c1
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - type: toggle
+    device_id: 0884af62e01eecda87b5e08d9c39b5a5
+    entity_id: 35c31d659aa0f5deb18c9ce916134a26
+    domain: switch
+  mode: single
+- id: '1744252299453'
+  alias: Office Charger On
+  description: ''
+  triggers:
+  - trigger: time
+    at: '12:00:00'
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.tuya_zigbee_02
+  mode: single
+- id: '1744252348504'
+  alias: Office Charger Off
+  description: ''
+  triggers:
+  - trigger: time
+    at: '14:00:00'
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.tuya_zigbee_02
+  mode: single
+- id: '1744501320851'
+  alias: Living Room Charger On
+  description: ''
+  triggers:
+  - trigger: time
+    at: 07:00:00
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.tuya_zigbee_03
+  mode: single
+- id: '1744501380574'
+  alias: Living Room Charger Off
+  description: ''
+  triggers:
+  - trigger: time
+    at: '20:00:00'
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.tuya_zigbee_03
+  mode: single
+- id: '1746679178302'
+  alias: Hallway Light On
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 02332723afccb1e8d82503143558547a
+    entity_id: e21b2004e52bcc8ec2a6d3157fef1517
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: sun
+    before: sunrise
+    before_offset: 01:00
+    after: sunset
+    after_offset: -00:45
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: 19b7c2e5e3ee8b38ac12ce4f2fb7f7e6
+    entity_id: a702409c92d2c48dcef78363028772f6
+    domain: switch
+  mode: single
+- id: '1746679248173'
+  alias: Hallway Light Off
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: 02332723afccb1e8d82503143558547a
+    entity_id: e21b2004e52bcc8ec2a6d3157fef1517
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: false
+  actions:
+  - type: turn_off
+    device_id: 19b7c2e5e3ee8b38ac12ce4f2fb7f7e6
+    entity_id: a702409c92d2c48dcef78363028772f6
+    domain: switch
+  mode: single
+- id: '1748475802629'
+  alias: Hallway Plants
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.moisture_sensor_1_soil_moisture
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+    below: 60
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Plants need watering
+      title: Hallway plants
+  mode: single
+- id: '1749254241858'
+  alias: Kitchen Light On Luminance
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: f6369f62b67843ea735f064a15f81c22
+    entity_id: 7ec0689053c2be97b52c7a657b393ff0
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.kitchen_sensor_illuminance_2
+    below: 1500
+  actions:
+  - type: turn_on
+    device_id: ac48ba1bb8070a88846125e872b89e0d
+    entity_id: 06cc1e10b9c298fc7164fc9e010b1df5
+    domain: switch
+  mode: single
+- id: '1749627073203'
+  alias: Back Shed Light On
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 6d0b185073986a5f0675b3ffacbf5d71
+    entity_id: 90bf12c988ab6df5a341a39a05340644
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  conditions:
+  - condition: sun
+    before: sunrise
+    before_offset: 01:00
+    after: sunset
+    after_offset: -00:45
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: 44b51e7874af1653b9dee46a93361a74
+    entity_id: 53d2d694301615245235f9695452575b
+    domain: switch
+  mode: single
+- id: '1749627130120'
+  alias: Back Shed Light Off
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: 6d0b185073986a5f0675b3ffacbf5d71
+    entity_id: 90bf12c988ab6df5a341a39a05340644
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: false
+  actions:
+  - type: turn_off
+    device_id: 44b51e7874af1653b9dee46a93361a74
+    entity_id: 53d2d694301615245235f9695452575b
+    domain: switch
+  mode: single
+- id: '1750721545774'
+  alias: Shed Light On Luminance
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 6d0b185073986a5f0675b3ffacbf5d71
+    entity_id: 90bf12c988ab6df5a341a39a05340644
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.back_shed_sensor_illuminance
+    below: 1500
+  actions:
+  - type: turn_on
+    device_id: 44b51e7874af1653b9dee46a93361a74
+    entity_id: 53d2d694301615245235f9695452575b
+    domain: switch
+  mode: single
+- id: '1750831980651'
+  alias: Storage Room Light On
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 37d4c907dd9faf5ced57e654175b2e09
+    entity_id: 1ee3f5987e4d1142166d8ec7405fa412
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: sun
+    before: sunrise
+    before_offset: 01:00
+    after: sunset
+    after_offset: -00:45
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: 6bcb53312dbff8a6a3309cfdc71effc4
+    entity_id: c57620364799a702b36b659d38480669
+    domain: switch
+  mode: single
+- id: '1750832056817'
+  alias: Storage Room Light Off
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: 37d4c907dd9faf5ced57e654175b2e09
+    entity_id: 1ee3f5987e4d1142166d8ec7405fa412
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: false
+  actions:
+  - type: turn_off
+    device_id: 6bcb53312dbff8a6a3309cfdc71effc4
+    entity_id: c57620364799a702b36b659d38480669
+    domain: switch
+  mode: single
+- id: '1750832601503'
+  alias: Storage Room Luminance On
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 37d4c907dd9faf5ced57e654175b2e09
+    entity_id: 1ee3f5987e4d1142166d8ec7405fa412
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.storage_room_sensor_illuminance
+    below: 1300
+  actions:
+  - type: turn_on
+    device_id: 6bcb53312dbff8a6a3309cfdc71effc4
+    entity_id: c57620364799a702b36b659d38480669
+    domain: switch
+  mode: single
+- id: '1750833483986'
+  alias: Laundry Light On
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 699f9e29ca7ac0d022c3af13063cf895
+    entity_id: 6676d8975246dc52697a3719fe33fa5f
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: sun
+    before: sunrise
+    before_offset: 01:00
+    after: sunset
+    after_offset: -00:45
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: ac48ba1bb8070a88846125e872b89e0d
+    entity_id: 06cc1e10b9c298fc7164fc9e010b1df5
+    domain: switch
+  mode: single
+- id: '1751330079413'
+  alias: Slide Gate Open 10 Mins
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.kc868_kc868_input02
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Slide Gate is still Open
+      title: Slide Gate is still Open
+  mode: single
+- id: '1757367247661'
+  alias: Slide gate Open 1 Hour
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.kc868_kc868_input02
+    for:
+      hours: 0
+      minutes: 60
+      seconds: 0
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: WARNING Close Slide Gate
+      title: Slide Gate Open > 1 Hour
+  mode: single
+- id: '1759905335702'
+  alias: Backdoor Is Unlocked 7.30
+  description: Announce unlocked back door via Music Assistant group and notify mobile
+    devices.
+  triggers:
+  - trigger: time
+    at: '19:30:00'
+  conditions:
+  - type: is_on
+    condition: device
+    device_id: 6d083ee619d1263b6b3a735245da8a85
+    entity_id: ad4fd6487364d3b0728785ba36a62c25
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  actions:
+  - action: music_assistant.play_announcement
+    target:
+      entity_id: media_player.sendspin_players
+    data:
+      tts_entity_id: tts.piper
+      message: Back door has not been locked, Do not forget to lock the door
+      announce_volume: 80
+      use_pre_announce: true
+  - action: notify.mobile_app_iphone
+    data:
+      message: Back Door is unlocked
+  - action: notify.mobile_app_ipad
+    data:
+      message: Back Door is unlocked
+  mode: single
+- id: '1760481031125'
+  alias: Backdoor Is Unlocked 8.30
+  description: Announce unlocked back door via Music Assistant group and notify mobile
+    devices.
+  triggers:
+  - trigger: time
+    at: '20:30:00'
+  conditions:
+  - type: is_on
+    condition: device
+    device_id: 6d083ee619d1263b6b3a735245da8a85
+    entity_id: ad4fd6487364d3b0728785ba36a62c25
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  actions:
+  - action: music_assistant.play_announcement
+    target:
+      entity_id: media_player.sendspin_players
+    data:
+      tts_entity_id: tts.piper
+      message: It is getting late now, back door is still not locked,
+      announce_volume: 85
+      use_pre_announce: true
+  - action: notify.mobile_app_iphone
+    data:
+      message: Back Door is still unlocked
+  - action: notify.mobile_app_ipad
+    data:
+      message: Back Door is still unlocked
+  mode: single
+- id: '1764901725529'
+  alias: Airconditioner on Icon
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.power_meter_3_power_a
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    above: 100
+  conditions: []
+  actions: []
+  mode: single
+- id: '1765422323115'
+  alias: Away From Home
+  description: ''
+  triggers:
+  - device_id: 9be55210ca85294a39b9da4d039a0b39
+    domain: device_tracker
+    entity_id: f3d509a2d01295e0980663a223d62e63
+    type: leaves
+    trigger: device
+    zone: zone.home
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: true
+  actions:
+  - action: presence_simulation.start
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1765422658058'
+  alias: Arrived Back Home
+  description: ''
+  triggers:
+  - device_id: 9be55210ca85294a39b9da4d039a0b39
+    domain: device_tracker
+    entity_id: f3d509a2d01295e0980663a223d62e63
+    type: enters
+    trigger: device
+    zone: zone.home
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: false
+  actions:
+  - action: presence_simulation.stop
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1766181371904'
+  alias: Group Audio Level
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - media_player.group_players_2
+    from:
+    - idle
+    to:
+    - playing
+  conditions: []
+  actions:
+  - action: media_player.volume_set
+    data:
+      volume_level: 0.4
+    target:
+      entity_id: media_player.group_players
+  mode: single
+- id: '1766804619643'
+  alias: Media Unmute Aux ESP32A1S
+  description: For ESP32 A1S
+  triggers:
+  - trigger: state
+    entity_id:
+    - media_player.sendspin_players
+    from:
+    - paused
+    - 'off'
+    - idle
+    to:
+    - playing
+    - 'on'
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id:
+      - switch.audio_office_amp_switch
+      - switch.audio_kitchen_a1_amp_switch
+      - switch.audio_living_room_amp_switch
+    data: {}
+  mode: single
+- id: '1766804709981'
+  alias: Media Mute Aux ESP32A1S
+  description: For ESP32 A1S
+  triggers:
+  - trigger: state
+    entity_id:
+    - media_player.sendspin_players
+    from:
+    - playing
+    to:
+    - paused
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      entity_id:
+      - switch.audio_living_room_amp_switch
+      - switch.audio_kitchen_a1_amp_switch
+      - switch.audio_office_amp_switch
+    data: {}
+  mode: single
+- id: '1767755934421'
+  alias: Front gate has been opened
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.front_gate_switch_2_contact
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+    from:
+    - 'off'
+    to:
+    - 'on'
+  conditions:
+  - condition: sun
+    before: sunset
+    after: sunrise
+  actions:
+  - action: media_player.volume_set
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data:
+      volume_level: 0.35
+  - action: tts.speak
+    metadata: {}
+    data:
+      cache: true
+      media_player_entity_id: media_player.group_players_2
+      message: Front gate has been opened,
+    target:
+      entity_id: tts.piper
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - action: media_player.volume_set
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data:
+      volume_level: 0.2
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      entity_id:
+      - switch.audio_living_room_aux_output
+      - switch.audio_office_aux_output
+      - switch.audio_kitchen_a1_aux_output
+    data: {}
+    enabled: true
+  - action: media_player.media_play
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data: {}
+    enabled: false
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Front Gate has been Opened
+  mode: single
+- id: '1767757268311'
+  alias: Front Gate still open 10 mins
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.front_gate_switch_2_contact
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+    from:
+    - 'off'
+    to:
+    - 'on'
+  conditions:
+  - condition: sun
+    before: sunset
+    after: sunrise
+  actions:
+  - action: music_assistant.play_announcement
+    target:
+      entity_id: media_player.sendspin_players
+    data:
+      tts_entity_id: tts.piper
+      message: Ohh noo, someone has left the front gate open again
+      announce_volume: 85
+      use_pre_announce: true
+  - action: notify.mobile_app_iphone
+    data:
+      message: Front gate has been left open
+  - action: notify.mobile_app_ipad
+    data:
+      message: Front gate has been left open
+  mode: single
+- id: '1767841015933'
+  alias: Airconditioner Icon >3000W
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.power_meter_3_power_a
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    above: 3000
+  conditions: []
+  actions: []
+  mode: single
+- id: '1767847593022'
+  alias: Parcel Box Delivery
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.mail_box_water_leak
+    from:
+    - 'off'
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions:
+  - condition: sun
+    before: sunset
+    after: sunrise
+  - condition: state
+    entity_id: person.mark
+    state:
+    - home
+  - type: is_on
+    condition: device
+    device_id: 6d083ee619d1263b6b3a735245da8a85
+    entity_id: ad4fd6487364d3b0728785ba36a62c25
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  actions:
+  - action: music_assistant.play_announcement
+    target:
+      entity_id: media_player.sendspin_players
+    data:
+      tts_entity_id: tts.piper
+      message: You have a delivery, Check the parcel box,
+      announce_volume: 80
+      use_pre_announce: true
+  - action: notify.mobile_app_iphone
+    data:
+      message: You have a delivery, check the parcel box.
+  mode: single
+- id: '1768084779774'
+  alias: Iphone Ringer
+  description: Announce check that your iphone ringer is on via Music Assistant group
+    and notify mobile devices.
+  triggers:
+  - trigger: time
+    at: '15:00:00'
+  conditions: []
+  actions:
+  - action: music_assistant.play_announcement
+    target:
+      entity_id: media_player.sendspin_players
+    data:
+      tts_entity_id: tts.piper
+      message: Check that your iphone ringer is on
+      announce_volume: 80
+      use_pre_announce: true
+  - action: notify.mobile_app_iphone
+    data:
+      message: Check iphone ringer is on
+  - action: notify.mobile_app_ipad
+    data:
+      message: Check iphone ringer is on
+  mode: single
+- id: '1768540206558'
+  alias: Front Door Bell Switch
+  description: Announce door bell via Music Assistant group and notify mobile devices.
+  triggers:
+  - domain: mqtt
+    device_id: 09949e4c584d055ef41f022252ce6369
+    type: action
+    subtype: single
+    trigger: device
+  conditions:
+  - condition: sun
+    before: sunset
+    after: sunrise
+  actions:
+  - action: scene.create
+    data:
+      scene_id: sendspin_snapshot
+      snapshot_entities:
+      - media_player.sendspin_players
+  - action: media_player.volume_set
+    target:
+      entity_id: media_player.sendspin_players
+    data:
+      volume_level: 0.8
+  - target:
+      entity_id: media_player.sendspin_players
+    data:
+      media:
+        media_content_id: media-source://media_source/local/Church Bell Westminster
+          chimes.mp3
+        media_content_type: audio/mpeg
+        metadata:
+          title: Church Bell Westminster chimes.mp3
+          thumbnail:
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://media_source
+          browse_entity_id: media_player.sendspin_players
+    action: media_player.play_media
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 13
+      milliseconds: 0
+  - action: scene.turn_on
+    target:
+      entity_id: scene.sendspin_snapshot
+  mode: restart
+- id: '1768872662264'
+  alias: Garden Relay 1 On
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.garden_relay_l1
+    from:
+    - 'off'
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Garden Relay 1 is on
+  mode: single
+- id: '1768872793744'
+  alias: Garden Relay 1 Off
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.garden_relay_l1
+    from:
+    - 'on'
+    to:
+    - 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Garden Relay 1 is now off
+  mode: single
+- id: '1768880766078'
+  alias: Garden Relay 2 On
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.garden_relay_l2
+    from:
+    - 'off'
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Garden Relay 2 is on
+  mode: single
+- id: '1768880807538'
+  alias: Garden Relay 3 On
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.garden_relay_l3
+    from:
+    - 'off'
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Garden Relay 3 is on
+  mode: single
+- id: '1768880870835'
+  alias: Garden Relay 4 On
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.garden_relay_l4
+    from:
+    - 'off'
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Garden Relay 4 is on
+  mode: single
+- id: '1768973753407'
+  alias: Garden Relay Unavailable
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.garden_relay_l1
+    from:
+    to:
+    - unavailable
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone
+    metadata: {}
+    data:
+      message: Garden Relay is Unavailable
+  mode: single
+- id: '1769566131161'
+  alias: Zone1 Manual
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.zone1_manual
+    from:
+    to:
+  conditions: []
+  actions:
+  - action: irrigation_unlimited.manual_run
+    metadata: {}
+    data:
+      entity_id: binary_sensor.irrigation_unlimited_c1_z1
+      time:
+        hours: 1
+        minutes: 30
+        seconds: 0
+      delay:
+        hours: 0
+        minutes: 0
+        seconds: 1
+  mode: single
+- id: '1769652719127'
+  alias: blood pressure 58min
+  description: ''
+  triggers:
+  - trigger: time_pattern
+    minutes: '58'
+  conditions:
+  - condition: time
+    after: 05:00:00
+    before: '22:30:00'
+  actions:
+  - action: media_player.volume_set
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data:
+      volume_level: 0.45
+  - action: tts.speak
+    metadata: {}
+    data:
+      cache: true
+      message: Blood Pressure test about to begin
+      media_player_entity_id: media_player.group_players_2
+    target:
+      entity_id: tts.piper
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: media_player.volume_set
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data:
+      volume_level: 0.2
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      entity_id:
+      - switch.audio_living_room_aux_output
+      - switch.audio_office_aux_output
+      - switch.audio_kitchen_a1_aux_output
+    data: {}
+    enabled: true
+  mode: single
+- id: '1769652888564'
+  alias: blood pressure 28 mins
+  description: ''
+  triggers:
+  - trigger: time_pattern
+    minutes: '28'
+  conditions:
+  - condition: time
+    after: 05:00:00
+    before: '22:30:00'
+  actions:
+  - action: media_player.volume_set
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data:
+      volume_level: 0.45
+  - action: tts.speak
+    metadata: {}
+    data:
+      cache: true
+      message: Blood Pressure test about to begin
+      media_player_entity_id: media_player.group_players_2
+    target:
+      entity_id: tts.piper
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: media_player.volume_set
+    metadata: {}
+    target:
+      entity_id: media_player.group_players_2
+    data:
+      volume_level: 0.2
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      entity_id:
+      - switch.audio_living_room_aux_output
+      - switch.audio_office_aux_output
+      - switch.audio_kitchen_a1_aux_output
+    data: {}
+    enabled: true
+  mode: single
+- id: '1769983359355'
+  alias: Awtrix On
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.kitchen_sensor_occupancy_2
+    from:
+    - 'off'
+    to:
+    - 'on'
+  conditions: []
+  actions:
+  - action: awtrix.settings
+    metadata: {}
+    data:
+      device: 58cb4045d3154bfd71cbf2350662384e
+      MATP: true
+  mode: single
+- id: '1769983403964'
+  alias: Awtrix Off
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.kitchen_sensor_occupancy_2
+    from:
+    - 'on'
+    to:
+    - 'off'
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  conditions: []
+  actions:
+  - action: awtrix.settings
+    metadata: {}
+    data:
+      device: 58cb4045d3154bfd71cbf2350662384e
+      MATP: false
+  mode: single
+- id: '1770692233167'
+  alias: Alarm Arm Disarm
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_button.alarm_on_off
+    from:
+    to:
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id: switch.kc868_kc868_out01
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - action: switch.turn_off
+    metadata: {}
+    target:
+      entity_id: switch.kc868_kc868_out01
+    data: {}
+  mode: single
+- id: '1775273929189'
+  alias: Front Gate Reminder 7.00pm
+  description: Announce front gate reminder via Music Assistant group and notify mobile
+    devices.
+  triggers:
+  - trigger: time
+    at: '19:00:00'
+  conditions:
+  - type: is_on
+    condition: device
+    device_id: 6d083ee619d1263b6b3a735245da8a85
+    entity_id: ad4fd6487364d3b0728785ba36a62c25
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  actions:
+  - action: music_assistant.play_announcement
+    target:
+      entity_id: media_player.sendspin_players
+    data:
+      tts_entity_id: tts.piper
+      message: Do not forget to lock the front gate,
+      announce_volume: 85
+      use_pre_announce: true
+  - action: notify.mobile_app_iphone
+    data:
+      message: Remember to lock front gate
+  - action: notify.mobile_app_ipad
+    data:
+      message: Remember to lock front gate
+  mode: single
+- id: '1776394769272'
+  alias: WLED Clock1 Day
+  description: ''
+  triggers:
+  - trigger: time_pattern
+    seconds: /5
+  conditions:
+  - condition: sun
+    after: sunrise
+    before: sunset
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: c83deec76065a4d6137d2f35abd3843b
+    entity_id: 2673b0c5c34aac71c7642c827679df4c
+    domain: light
+    enabled: false
+  - action: rest_command.wled_clock
+    data:
+      brightness: 20
+      color:
+      - ffd500
+      text: '{{ now().strftime(''%H:%M'') }}'
+      seconds: 5
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 6
+      milliseconds: 0
+  - action: rest_command.wled_clock
+    data:
+      brightness: 20
+      color:
+      - 547EF0
+      text: '{{ states(''sensor.smart_meter_63a_1_real_power'')| round(0) }}w'
+      seconds: 15
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 4
+      milliseconds: 0
+  - action: rest_command.wled_clock
+    data:
+      brightness: 20
+      color:
+      - FF3131
+      text: '{{ states(''sensor.gw1100b_outdoor_temperature'') }}c'
+      seconds: 15
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - action: rest_command.wled_clock
+    data:
+      brightness: 20
+      color:
+      - 07c817
+      text: '{{ states(''sensor.gw1100b_indoor_temperature'') }}c'
+      seconds: 15
+  mode: single
+- id: '1777676528110'
+  alias: WLED Clock2 Day
+  description: ''
+  triggers:
+  - trigger: time_pattern
+    seconds: /5
+  conditions:
+  - condition: sun
+    after: sunrise
+    before: sunset
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: c83deec76065a4d6137d2f35abd3843b
+    entity_id: 2673b0c5c34aac71c7642c827679df4c
+    domain: light
+    enabled: false
+  - action: rest_command.wled_clock2
+    data:
+      brightness: 20
+      color:
+      - ffd500
+      text: '{{ now().strftime(''%H:%M'') }}'
+      seconds: 5
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 6
+      milliseconds: 0
+  - action: rest_command.wled_clock2
+    data:
+      brightness: 20
+      color:
+      - FF3131
+      text: '{{ states(''sensor.gw1100b_outdoor_temperature'') | round(1) }}c'
+      seconds: 15
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - action: rest_command.wled_clock2
+    data:
+      brightness: 20
+      color:
+      - 07c817
+      text: '{{ states(''sensor.audio_kitchen_a1_kitchen_temperature'') | round(1)
+        }}c'
+      seconds: 15
+  mode: single
+- id: '1777699219204'
+  alias: WLED Clock1 Night
+  description: ''
+  triggers:
+  - trigger: time_pattern
+    seconds: /5
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: c83deec76065a4d6137d2f35abd3843b
+    entity_id: 2673b0c5c34aac71c7642c827679df4c
+    domain: light
+    enabled: false
+  - action: rest_command.wled_clock
+    data:
+      brightness: 2
+      color:
+      - ffd500
+      text: '{{ now().strftime(''%H:%M'') }}'
+      seconds: 5
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 6
+      milliseconds: 0
+  - action: rest_command.wled_clock
+    data:
+      brightness: 2
+      color:
+      - 547EF0
+      text: '{{ utcnow().strftime(''%H:%M'') }}'
+      seconds: 5
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - action: rest_command.wled_clock
+    data:
+      brightness: 2
+      color:
+      - FF3131
+      text: '{{ states(''sensor.gw1100b_outdoor_temperature'') }}c'
+      seconds: 15
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - action: rest_command.wled_clock
+    data:
+      brightness: 2
+      color:
+      - 07c817
+      text: '{{ states(''sensor.gw1100b_indoor_temperature'') }}c'
+      seconds: 15
+  mode: single
+- id: '1777927621469'
+  alias: WLED Clock2 Night
+  description: ''
+  triggers:
+  - trigger: time_pattern
+    seconds: /5
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+    enabled: true
+  actions:
+  - type: turn_on
+    device_id: c83deec76065a4d6137d2f35abd3843b
+    entity_id: 2673b0c5c34aac71c7642c827679df4c
+    domain: light
+    enabled: false
+  - action: rest_command.wled_clock2
+    data:
+      brightness: 2
+      color:
+      - 547EF0
+      text: '{{ now().strftime(''%H:%M'') }}'
+      seconds: 5
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 6
+      milliseconds: 0
+  mode: single
+- id: '1781930346731'
+  alias: Laundry Light On Luminance
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 699f9e29ca7ac0d022c3af13063cf895
+    entity_id: 6676d8975246dc52697a3719fe33fa5f
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.kitchen_sensor_illuminance_2
+    below: 1500
+  actions:
+  - type: turn_on
+    device_id: ac48ba1bb8070a88846125e872b89e0d
+    entity_id: 06cc1e10b9c298fc7164fc9e010b1df5
+    domain: switch
+  mode: single
+- id: '1781934286614'
+  alias: Landry Water Leak
+  description: ''
+  triggers:
+  - type: moist
+    device_id: 24ccc33dcec179b06175119dd08dd870
+    entity_id: 199ae6f7a70ed671ed9a5d199c1765fc
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+  conditions: []
+  actions:
+  - action: music_assistant.play_announcement
+    target:
+      entity_id: media_player.sendspin_players
+    data:
+      tts_entity_id: tts.piper
+      message: You have water leaking in the Laundry,
+      announce_volume: 85
+      use_pre_announce: true
+  - action: notify.mobile_app_iphone
+    data:
+      message: You have a water leak, check the Laundry.
+  - action: notify.mobile_app_ipad
+    data:
+      message: You have a water leak, check the Laundry.
+  mode: single
+- id: '1785195409964'
+  alias: Bedroom - Tuya ERS-10TZBVK-AA Smart knob
+  description: ''
+  use_blueprint:
+    path: EPMatt/tuya_ERS-10TZBVK-AA.yaml
+    input:
+      controller_device: ad7179edaca910d99ff3a12fd5914aad
+      action_click_short:
+      - action: light.toggle
+        metadata: {}
+        target:
+          device_id: 2fe3eda6d86d4e81f4122bf9c1c94814
+        data: {}
+      action_rotate_left:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          device_id: 2fe3eda6d86d4e81f4122bf9c1c94814
+        data:
+          brightness_step_pct: -5
+      action_rotate_right:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          device_id: 2fe3eda6d86d4e81f4122bf9c1c94814
+        data:
+          brightness_step_pct: 5
+- id: '1785281133404'
+  alias: Lounge Knob ZG-101ZD
+  description: ''
+  use_blueprint:
+    path: LanKing/z2m-knobs-gesture-controller.yaml
+    input:
+      base_topic: zigbee2mqtt/Lounge Light Sw
+      cmd_single_action: []
+      ev_single_action:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          device_id: 1523e95b57ad5269ff638070b99025b0
+        data:
+          brightness_pct: 20
+      cmd_double_action:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          device_id: 1523e95b57ad5269ff638070b99025b0
+        data: {}
+      cmd_rotate_left_action:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          device_id: 1523e95b57ad5269ff638070b99025b0
+        data:
+          brightness_step_pct: -5
+      cmd_rotate_right_action:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          device_id: 1523e95b57ad5269ff638070b99025b0
+        data:
+          brightness_step_pct: 5
+      debug_mode: disabled
+- id: '1785811488656'
+  alias: Audio Control Office
+  description: ''
+  use_blueprint:
+    path: EPMatt/tuya_ERS-10TZBVK-AA.yaml
+    input:
+      controller_device: 7f0d5d32a37c7995d1cad4f14afc1034
+      action_rotate_left:
+      - action: media_player.volume_down
+        metadata: {}
+        target:
+          area_id: office
+        data: {}
+      action_rotate_right:
+      - action: media_player.volume_up
+        metadata: {}
+        target:
+          area_id: office
+        data: {}
+      action_click_short:
+      - action: script.turn_on
+        metadata: {}
+        target:
+          entity_id:
+          - script.coast_fm
+        data: {}
+      action_click_double:
+      - action: script.turn_on
+        metadata: {}
+        target:
+          entity_id:
+          - script.skynewsaacnova
+        data: {}
+      action_click_long:
+      - action: media_player.media_pause
+        metadata: {}
+        target:
+          entity_id:
+          - media_player.sendspin_players
+        data: {}
+      click_double_press_exposed: false
+- id: '1785997765258'
+  alias: Audio Control Lounge
+  description: ''
+  use_blueprint:
+    path: EPMatt/tuya_ERS-10TZBVK-AA.yaml
+    input:
+      controller_device: 3f6cf40574330fe4f3fa40ac9b1f55a7
+      action_rotate_left:
+      - action: media_player.volume_down
+        metadata: {}
+        target:
+          area_id: living_room
+        data: {}
+      action_rotate_right:
+      - action: media_player.volume_up
+        metadata: {}
+        target:
+          area_id: living_room
+        data: {}
+      action_click_short:
+      - action: script.turn_on
+        metadata: {}
+        target:
+          entity_id:
+          - script.coast_fm
+        data: {}
+      action_click_double:
+      - action: script.turn_on
+        metadata: {}
+        target:
+          entity_id: script.skynewsaacnova
+        data: {}
+      action_click_long:
+      - action: media_player.media_pause
+        metadata: {}
+        target:
+          entity_id:
+          - media_player.sendspin_players
+        data: {}
+- id: '1785999065906'
+  alias: Audio Control Kitchen
+  description: ''
+  use_blueprint:
+    path: EPMatt/tuya_ERS-10TZBVK-AA.yaml
+    input:
+      controller_device: c03f6bb03e79d641a4218847a88ee803
+      action_rotate_left:
+      - action: media_player.volume_down
+        metadata: {}
+        target:
+          area_id: kitchen
+        data: {}
+      action_rotate_right:
+      - action: media_player.volume_up
+        metadata: {}
+        target:
+          area_id: kitchen
+        data: {}
+      action_click_short:
+      - action: script.turn_on
+        metadata: {}
+        target:
+          entity_id:
+          - script.coast_fm
+        data: {}
+      action_click_double:
+      - action: script.turn_on
+        metadata: {}
+        target:
+          entity_id: script.skynewsaacnova
+        data: {}
+      action_click_long:
+      - action: media_player.media_pause
+        metadata: {}
+        target:
+          entity_id:
+          - media_player.sendspin_players
+        data: {}
+- id: '1786685698312'
+  alias: 'Light: Sync Dimmer State on Power Restored'
+  description: Forces Home Assistant to poll the TS0501B dimmer when mains power is
+    turned on.
+  triggers:
+  - entity_id: light.lounge_downlights
+    from:
+    - unavailable
+    - unknown
+    trigger: state
+  conditions: []
+  actions:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 3
+      milliseconds: 0
+  - target:
+      entity_id: light.lounge_downlights
+    action: homeassistant.update_entity
+  mode: restart
+- id: '1791775373523'
+  alias: Audio Office Sendspin
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - media_player.office_audio_office_sendspin_media_player
+    from:
+    - idle
+    to:
+    - playing
+  conditions: []
+  actions:
+  - action: media_player.volume_set
+    data:
+      volume_level: 0.8
+      volume_scale: linear
+    target:
+      entity_id:
+      - media_player.office_audio_office_sendspin_media_player
+  mode: single
+- id: '1791843012795'
+  alias: Audio Kitchen Sendspin
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - media_player.kitchen_audio_kitchen_sendspin_audio_kitchen
+    from:
+    - idle
+    to:
+    - playing
+  conditions: []
+  actions:
+  - action: media_player.volume_set
+    data:
+      volume_level: 0.8
+      volume_scale: linear
+    target:
+      entity_id: media_player.kitchen_audio_kitchen_sendspin_audio_kitchen
+  mode: single
+- id: '1791866105112'
+  alias: Audio Living Sendspin
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - media_player.living_room_audio_living_room_sendspin_audio_living
+    from:
+    - idle
+    to:
+    - playing
+  conditions: []
+  actions:
+  - action: media_player.volume_set
+    data:
+      volume_level: 0.8
+      volume_scale: linear
+    target:
+      entity_id:
+      - media_player.living_room_audio_living_room_sendspin_audio_living
+  mode: single
