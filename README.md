@@ -1,1 +1,1 @@
-Various files that I have created for Homeassistant
+Various files that I have created for Home assistant
