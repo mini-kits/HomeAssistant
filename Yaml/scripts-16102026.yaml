@@ -1,0 +1,254 @@
+5cs_radio_1044:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://17843.live.streamtheworld.com/PIR_5CSAAC.aac
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: 5cs Radio 1044
+  description: ''
+abc_891_adelaide:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: http://live-radio01.mediahubaustralia.com/5LRW/aac/
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: ABC 891 Adelaide
+  description: ''
+rnz_international:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: http://radionz-ice.streamguys.com/international.mp3
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: RNZ International
+  description: ''
+rnz_national:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: http://radionz-ice.streamguys.com/national.mp3
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: RNZ National
+  description: ''
+abc_national:
+  sequence:
+  - action: media_player.play_media
+    data:
+      media:
+        media_content_id: https://mediaserviceslive.akamaized.net/hls/live/2038318/rnnsw/masterhq.m3u8
+        media_content_type: music
+        metadata: {}
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: ABC National
+  description: ''
+radio_australia:
+  sequence:
+  - action: media_player.play_media
+    data:
+      media:
+        media_content_id: media-source://radio_browser/4a46b037-bec0-4bb0-b826-51e5fa9ee724
+        media_content_type: audio/mpeg
+        metadata:
+          title: ABC Radio Australia (MP3)
+          thumbnail: https://www.abc.net.au/core-assets/pacific/favicon-32x32.png
+          media_class: music
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: app
+            media_content_id: media-source://radio_browser
+          - media_content_type: music
+            media_content_id: media-source://radio_browser/country/AU
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: Radio Australia
+  description: ''
+bbc_world:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: http://stream.live.vc.bbcmedia.co.uk/bbc_world_service
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: BBC World
+  description: ''
+radio_australia_2:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://radio-trtvotworld.medya.trt.com.tr/master.m3u8
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: Radio Turkiye
+  description: ''
+cruise_1323:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://23093.live.streamtheworld.com/ARN_CRUISE1323AAC.aac
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: Cruise 1323
+  description: ''
+coast_fm:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: http://streaming1.coastfm.com.au:8000/broadwavehigh.mp3
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: Coast FM
+  description: ''
+5mu_radio:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://17843.live.streamtheworld.com/MUR_5MUAAC.aac
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: 5mu Radio
+  description: ''
+radio_australia_3:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://mediaserviceslive.akamaized.net/hls/live/2038266/ramulti/masterhq.m3u8
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id: media_player.sendspin_players
+  alias: Radio Australia 2
+  description: ''
+bbc_world_3:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: http://stream.live.vc.bbcmedia.co.uk/bbc_world_service
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: BBC World 3
+  description: ''
+5rm_radio:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://17843.live.streamtheworld.com/BER_5RMAAC.aac
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: 5RM Radio
+  description: ''
+5au_radio:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://17843.live.streamtheworld.com/AUG_5AUAAC.aac
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id: media_player.group_players_2
+  alias: 5AU Radio
+  description: ''
+5cc_radio:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://17843.live.streamtheworld.com/LIN_5CCAAC.aac
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: 5CC Radio
+  description: ''
+skynewsmp3nova:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: http://playerservices.streamtheworld.com/api/livestream-redirect/NOVA_SKYNEWS.mp3
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: SkyNewsmp3nova
+  description: ''
+skynewsaacnova:
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://playerservices.streamtheworld.com/api/livestream-redirect/NOVA_SKYNEWSAAC.aac
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id:
+      - media_player.sendspin_players
+  alias: SkyNewsaacnova
+  description: ''
+'1768092749850':
+  sequence:
+  - action: media_extractor.play_media
+    data:
+      media_content_id: https://playerservices.streamtheworld.com/api/livestream-redirect/NOVA_SKYNEWSAAC.aac
+      media_content_type: music
+      enqueue: replace
+    target:
+      entity_id: media_player.group_players_2
+  alias: VLC Stream
+  description: ''
+irrigation_manual_run:
+  sequence:
+  - action: irrigation_unlimited.manual_run
+    metadata: {}
+    data:
+      entity_id: binary_sensor.irrigation_unlimited_c1_m
+      sequence_id: 1
+      time:
+        hours: 6
+        minutes: 0
+        seconds: 0
+      delay:
+        hours: 0
+        minutes: 1
+        seconds: 0
+  alias: Irrigation Manual Run
+  description: ''
