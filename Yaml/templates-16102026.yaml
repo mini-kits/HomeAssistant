@@ -1,0 +1,58 @@
+## Below is my prototype code for the car battery monitor ##
+
+- sensor:
+    - name: "Car Battery Monitor 1"
+      unique_id: e9d5cd91-5769-40d3-8168-ca9bc2d09364
+      icon: mdi:car-battery 5
+      unit_of_measurement: "VDC"
+      state: >
+        {{ ((states('sensor.tasmota1_analog_a0')|float(0) - 50 ) / 24.0)|round (2) }}
+
+    - name: "Car Battery Monitor 2"
+      unique_id: 05048c62-3e4e-461a-a66c-3ee539a58e09
+      icon: mdi:car-battery 5
+      unit_of_measurement: "VDC"
+      state: >
+        {{ ((states('sensor.tasmota2_analog_a0')|float(0) - 50 ) / 24.2)|round (2) }}
+
+    - name: "Car Battery Monitor 5"
+      unique_id: b7b9d669-cb52-4f76-ace3-7d1b384033a3
+      icon: mdi:car-battery 5
+      unit_of_measurement: "VDC"
+      state: >
+        {{ ((states('sensor.tasmota5_analog_a0')|float(0) - 50 ) / 24.2)|round (2) }}
+
+    - name: "Car Battery Monitor 3"
+      unique_id: d8632a1e-2c6f-4a40-9d04-1b1ad6857bc3
+      icon: mdi:car-battery 3
+      unit_of_measurement: "VDC"
+      state: >
+        {{ ((states('sensor.tasmota3_analog_a0')|float(0) - 50 ) / 24.0)|round (2) }}
+
+    - name: "Car Battery Monitor 4"
+      unique_id: 19bce958-84bb-41c0-8ee8-4783312ec47e
+      icon: mdi:car-battery 4
+      unit_of_measurement: "VDC"
+      state: >
+        {{ ((states('sensor.tasmota4_analog_a4')|float(0) - 50 ) / 109)|round (2) }}
+
+    - name: "Car Battery Monitor 5"
+      unique_id: cc867a94-f6e4-421b-aeb8-624bfef66f54
+      icon: mdi:car-battery 2
+      unit_of_measurement: "VDC"
+      state: >
+        {{ ((states('sensor.tasmota5_analog_a2')|float(0) - 50 ) / 107)|round (2) }}
+
+- binary_sensor:
+    - name: "AC Power State"
+      unique_id: ac_power_state
+      device_class: running
+      state: >-
+        {{ states('sensor.your_power_sensor_entity_id') | float > 50 }}
+      # Optional: Add icon templates here as well for a system-wide icon change
+      icon: >-
+        {% if is_state('binary_sensor.ac_power_state', 'on') %}
+          mdi:air-conditioner
+        {% else %}
+          mdi:air-conditioner-off
+        {% endif %}
