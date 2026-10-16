@@ -1,0 +1,84 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+template: !include templates.yaml
+
+#packages: !include_dir_named integrations
+
+# PVOutput Upload
+rest_command:
+  update_pvoutput:
+    url: https://pvoutput.org/service/r2/addstatus.jsp
+    method: post
+    content_type: "application/x-www-form-urlencoded"
+    headers:
+      X-Pvoutput-Apikey: ce9d3e48dd5b045cb0bec3a46986fa41498fd6dd
+      X-Pvoutput-SystemId: 32341
+    payload: "d={{now().strftime('%Y%m%d')}}&t={{now().strftime('%H:%M')}}&v2={{(states('sensor.minikits_ac_power'))|round(0)}}&v6={{(states('sensor.minikits_ac_voltage'))}}&c1=1"
+
+  # WLED Text
+  #rest_command:
+  wled_text:
+    url: http://172.20.2.97/json/state
+    method: POST
+    payload: '{"seg": [{"id": 0, "n": "{{text}}"}]}'
+
+  wled_clock:
+    url: http://172.20.2.97/json/state
+    method: POST
+    payload: '{ "bri": {{ brightness | int }}, "seg": [{ "col": {{ color }}, "n": "{{ text }}"}]}'
+
+  wled_clock2:
+    url: http://172.20.2.215/json/state
+    method: POST
+    payload: '{ "bri": {{ brightness | int }}, "seg": [{ "col": {{ color }}, "n": "{{ text }}"}]}'
+
+  wled_set_preset:
+    url: http://172.20.2.97/json/state
+    method: POST
+    payload: '{"ps": "{{ preset_id }}"}' # Use templating to set the preset ID dynamically
+
+#tts:
+#  - platform: picotts
+#    language: "en-GB"
+
+# Irrigation Unlimited
+irrigation_unlimited:
+  controllers:
+    zones:
+      - entity_id: "switch.garden_relay_l1"
+      - entity_id: "switch.garden_relay_l2"
+      - entity_id: "switch.garden_relay_l3"
+      - entity_id: "switch.garden_relay_l4"
+    sequences:
+      - name: "Summer"
+        duration: "00:90"
+        delay: "00:01"
+        schedules:
+          - time: "17:00"
+            weekday: [tue, thu, sat]
+            month: [nov, dec, jan, feb, mar]
+        zones:
+          - zone_id: 1
+          - zone_id: 2
+          - zone_id: 3
+          - zone_id: 4
+      - name: "Spring and Autumn"
+        duration: "00:90"
+        delay: "00:01"
+        schedules:
+          - time: "17:00"
+            weekday: [sat, wed]
+            month: [apr, may, sep, oct]
+        zones:
+          - zone_id: 1
+          - zone_id: 2
+          - zone_id: 3
+          - zone_id: 4
