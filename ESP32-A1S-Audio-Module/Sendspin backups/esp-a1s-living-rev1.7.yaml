@@ -1,0 +1,316 @@
+# ESP32-A1S Audio Kit -- Sendspin (Music Assistant multi-room) config
+# Board:    AI-Thinker ESP32-A1S Audio Kit (ES8388 codec)
+# Requires: ESPHome >= 2026.5.0 (sendspin in core), Music Assistant >= 2.7.0b19
+# Setup:    add the secrets listed below to secrets.yaml -> esphome run esp-a1s-office-rev1.7.yaml
+#
+# secrets.yaml needs:
+#   wifi_ssid2, wifi_password2, wifi_password   (existing)
+#   api_encryption_key                          (NEW - generate a fresh one)
+#   ota_password                                (NEW - generate a fresh one)
+#
+# rev1.7 changes vs rev1.6:
+#   - GPIO21 amp enable is now active-high (inverted: false) so the speaker amp
+#     is genuinely OFF while idle/muted (was the likely cause of idle noise)
+#   - Mute switch and amp are forced OFF at boot (restore_mode + on_boot)
+#   - Removed manual i2s speaker start()/stop() lambdas (pipeline manages it)
+#   - Speaker timeout changed from "never" to 5s so I2S isn't clocked forever
+#   - psram mode set explicitly
+#   - API key and OTA password moved to secrets.yaml
+#   - Optional WiFi TX power reduction included (commented out)
+
+esphome:
+  name: audio-living-sendspin
+  friendly_name: Audio Living
+  on_boot:
+    # Late priority so the ES8388 and outputs are fully initialised
+    priority: -100
+    then:
+      # Route audio to both headphone jack and speaker amp
+      - select.set:
+          id: dac_output_select
+          option: "BOTH"
+      # Force a known-muted state: DAC muted AND speaker amp gate closed
+      - switch.turn_off: mute_switch
+
+esp32:
+  board: esp-wrover-kit
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+  encryption:
+    key: "yMBtj07tIWNHcmhINQ3kbez4GVDfT5jJY11zZgiA31s="
+
+# Allow Over-The-Air updates
+ota:
+  - platform: esphome
+    password: "b93d758b789604bec5dc452a7a33ef5b"
+
+wifi:
+  ssid: !secret wifi_ssid2
+  password: !secret wifi_password2
+  power_save_mode: NONE
+  # OPTIONAL: lowering TX power can reduce burst noise coupling into the
+  # analog path. Uncomment and tune if noise persists after the amp fix.
+  # output_power: 12dB
+  # Fallback AP / captive portal when WiFi is unavailable
+  ap:
+    ssid: "Esp32-A1S Fallback Hotspot"
+    password: !secret wifi_password
+
+captive_portal:
+
+# PSRAM required: sendspin task stack and audio decode buffers live here
+psram:
+  mode: quad
+
+# ===== ES8388 audio codec (I2C control + I2S audio) =====
+# Docs: https://esphome.io/components/audio_dac/es8388/
+i2c:
+  sda: GPIO33
+  scl: GPIO32
+  frequency: 100kHz
+  id: bus_a
+
+audio_dac:
+  - platform: es8388
+    id: es8388_dac
+
+select:
+  - platform: es8388
+    es8388_id: es8388_dac
+    dac_output:
+      id: dac_output_select
+      name: "DAC Output"
+    adc_input_mic:
+      name: "ADC Input MIC"
+
+i2s_audio:
+  id: i2s_output
+  i2s_lrclk_pin: GPIO25
+  i2s_bclk_pin: GPIO27
+  i2s_mclk_pin: GPIO0
+
+# ===== On-board speaker amp enable (GPIO21) =====
+# GPIO21 is the A1S PA_ENABLE line and is ACTIVE-HIGH.
+# turn_on  = amp enabled, turn_off = amp disabled (silent).
+# If your board revision turns out to be active-low (speaker silent while
+# playing), set inverted: true again.
+output:
+  - platform: gpio
+    pin:
+      number: GPIO21
+      inverted: false
+    id: amp_hardware_gate
+
+switch:
+  - platform: template
+    name: "AMP Switch"
+    id: mute_switch
+    icon: "mdi:amplifier"
+    optimistic: true
+    # Always start OFF (muted, amp gate closed) after boot
+    restore_mode: ALWAYS_OFF
+    # ON = amp enabled + DAC unmuted
+    turn_on_action:
+      - output.turn_on: amp_hardware_gate
+      - lambda: |-
+          id(es8388_dac).set_mute_off();
+    # OFF = DAC muted first, then amp gate closed
+    turn_off_action:
+      - lambda: |-
+          id(es8388_dac).set_mute_on();
+      - delay: 50ms
+      - output.turn_off: amp_hardware_gate
+
+# ===== On-board microphone (I2S from ES8388 ADC) =====
+microphone:
+  - platform: i2s_audio
+    i2s_din_pin: GPIO35
+    id: mic1
+    adc_type: external
+    pdm: false
+    sample_rate: 16000
+    bits_per_sample: 16bit
+
+# ===== On-board buttons + headphone-jack detect =====
+binary_sensor:
+  # Headphone jack insertion sensor
+  - platform: gpio
+    pin:
+      number: GPIO39
+      inverted: true
+      mode:
+        input: true
+    name: "Jack Status"
+
+  # Keys 1-6: physical buttons on the board
+  # (Key 4 = GPIO23 is not defined here because the DHT sensor uses that pin)
+  - platform: gpio
+    pin:
+      number: GPIO036
+      inverted: true
+    name: "Key 1"
+    filters:
+      - delayed_off: 10ms
+
+  - platform: gpio
+    pin:
+      number: GPIO013
+      inverted: true
+    name: "Key 2"
+    filters:
+      - delayed_off: 10ms
+
+  - platform: gpio
+    pin:
+      number: GPIO019
+      inverted: true
+    name: "Key 3"
+    filters:
+      - delayed_off: 10ms
+
+  - platform: gpio
+    pin:
+      number: GPIO018
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    name: "Key 5"
+    filters:
+      - delayed_off: 10ms
+
+  - platform: gpio
+    pin:
+      number: GPIO005
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    name: "Key 6"
+    filters:
+      - delayed_off: 10ms
+
+# ===== Onboard status LED =====
+light:
+  - platform: status_led
+    name: "Red LED"
+    pin:
+      number: GPIO22
+      inverted: true
+
+# ============================================================
+#  Sendspin multi-room audio (core component since 2026.5.0)
+# ============================================================
+
+# I2S speaker output -- consumes the sendspin audio pipeline.
+# The media player pipeline starts/stops this speaker itself; a finite
+# timeout means I2S is not clocked indefinitely while idle.
+speaker:
+  - platform: i2s_audio
+    i2s_audio_id: i2s_output
+    sample_rate: 48000
+    id: i2s_speaker_output
+    i2s_dout_pin: GPIO26
+    bits_per_sample: 16bit
+    dac_type: external
+    channel: stereo
+    timeout: 5s
+    buffer_duration: 1000ms
+    audio_dac: es8388_dac
+
+# Sendspin hub: discovers the Sendspin server via mDNS (TCP 8928)
+sendspin:
+  id: sendspin_hub
+  task_stack_in_psram: true
+
+# 1. Enable the HTTP client component
+http_request:
+  buffer_size_rx: 32768
+
+# 2. Define the media stream sources
+media_source:
+  - platform: sendspin
+    id: sendspin_source
+    decode_memory: psram
+    static_delay_adjustable: true  
+    initial_static_delay: 0ms
+  - platform: audio_http
+    id: http_source
+    buffer_size: 524288
+
+# 3. Media player entity exposed to Home Assistant / Music Assistant
+media_player:
+  - platform: speaker_source
+    id: sendspin_audio_living
+    name: Sendspin Audio Living
+    media_pipeline:
+      speaker: i2s_speaker_output
+      sources:
+        - sendspin_source
+        - http_source
+
+    on_play:
+      then:
+        # Cancel any pending shutdown if audio returns
+        - script.stop: delayed_audio_shutdown
+        # Give the ES8388 DAC time to settle its DC offset before unmuting
+        - delay: 500ms
+        # Open the amp gate and unmute the DAC
+        - switch.turn_on: mute_switch
+
+    on_idle:
+      then:
+        # Non-blocking countdown, then mute + close the amp gate
+        - script.execute: delayed_audio_shutdown
+
+# Delayed shutdown without blocking other tasks
+script:
+  - id: delayed_audio_shutdown
+    mode: restart
+    then:
+      - delay: 1500ms
+      - switch.turn_off: mute_switch
+
+sensor:
+  - platform: wifi_signal
+    name: "WiFi Signal"
+    id: wifi_signal_db
+    update_interval: 60s
+    disabled_by_default: true
+
+  - platform: copy
+    source_id: wifi_signal_db
+    name: "WiFi Signal Strength"
+    filters:
+      - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
+    unit_of_measurement: " %"
+    entity_category: "diagnostic"
+    device_class: ""
+    disabled_by_default: true
+
+  - platform: uptime
+    name: "Uptime"
+    force_update: false
+    unit_of_measurement: s
+    icon: mdi:timer-outline
+    accuracy_decimals: 0
+    device_class: duration
+    state_class: total_increasing
+    entity_category: diagnostic
+    update_interval: 60s
+    disabled_by_default: true
+
+  # NOTE: GPIO23 is shared with Key 4 on the A1S. Pressing Key 4 can corrupt
+  # a reading, and DHT bit-banging briefly blocks interrupts (possible tiny
+  # audio glitch once a minute). Move to a free header GPIO if this bothers you.
+  - platform: dht
+    pin: GPIO23
+    temperature:
+      name: "Living Temperature"
+    humidity:
+      name: "Living Humidity"
+    update_interval: 60s
